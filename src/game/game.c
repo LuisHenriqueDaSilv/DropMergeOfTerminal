@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../utils/utils.h"
 
-int rows = 7,columns = 5;
 int currentPointer = 0;
 int gameTable[7][5];
 int nextValue1 = 4;
@@ -54,21 +54,36 @@ void handleGame(){
   printf("\n\033[0m--------------------------------------------------\033[0m\n");
   for(int i = 0; i<rows; i++){
     for(int j = 0; j<columns; j++){
-      printf("|    %d   |", gameTable[i][j]);
+      if(gameTable[i][j] == 0){
+        printf("|        |");
+      } else {
+        // printf("|%8d|", gameTable[i][j]);
+        printf("|");
+        printCenter(gameTable[i][j], 8);
+        printf("|");
+      }
     }
     printf("\n\033[0m--------------------------------------------------\033[0m\n");
+  }
+
+  int fall_ = fall(gameTable);
+  if(fall_==1){
+    return;
   }
 
   char key = readKey();
 
   if(key == 65 || key == 97){
-    if(currentPointer == 0){ currentPointer = columns-1; } 
+    if(currentPointer == 0){ currentPointer = columns-1; }
     else {currentPointer--;};
   } else   if(key == 68 || key == 100){
     if(currentPointer == columns-1){ currentPointer = 0; } 
     else {currentPointer++;}
   } if (key == 10){ // Selecionou a linha
-    nextValue1 = nextValue2;
-    fscanf(gameSequence, " %d", &nextValue2);
+    if(gameTable[0][currentPointer] == 0){
+      gameTable[0][currentPointer] = nextValue1;
+      nextValue1 = nextValue2;
+      fscanf(gameSequence, " %d", &nextValue2);
+    }
   }
 }
