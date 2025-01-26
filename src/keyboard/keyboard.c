@@ -24,7 +24,8 @@ void disableRawMode() {
 #endif
 
 char readKey(){
-  char c;
+  printf("\n");
+  char c = '\0';
   #ifdef _WIN32
     while (1) {
       if (_kbhit()) {
@@ -33,7 +34,7 @@ char readKey(){
     }
   #else
     enableRawMode();
-    while (1) {
+    while (c == '\0') {
       read(STDIN_FILENO, &c, 1);
     }
 
