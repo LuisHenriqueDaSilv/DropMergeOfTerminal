@@ -6,18 +6,19 @@
 #include "../utils/utils.h"
 
 int currentPointer = 0;
-int gameTable[7][5];
+int gameTable[10][5];
 int nextValue1 = 4;
 int nextValue2 = 16;
+int iLastFall = 0;
+int jLastFall = 0;
 
 FILE* gameSequence;
 
 void gameStart(){
   gameStatus = 2;
-  // memset(gameTable, 0, sizeof(gameTable));
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < columns; j++) {
-        printf("%d ", gameTable[i][j]);
+      printf("%d ", gameTable[i][j]);
     }
     printf("\n");
   }
@@ -59,15 +60,25 @@ void handleGame(){
       } else {
         // printf("|%8d|", gameTable[i][j]);
         printf("|");
-        printCenter(gameTable[i][j], 8);
-        printf("|");
+        if(gameTable[i][j] < 0){
+          int positiveValue =  gameTable[i][j]*-1;
+          printf("\033[0;35m");
+          printCenter(positiveValue, 8);
+        } else {
+          printCenter(gameTable[i][j], 8);
+        }
+        printf("\033[0m|");
       }
     }
     printf("\n\033[0m--------------------------------------------------\033[0m\n");
   }
 
-  int fall_ = fall(gameTable);
+  int fall_ = fall(gameTable, &iLastFall, &jLastFall);
   if(fall_==1){
+    return;
+  } 
+  int merge_ = merge(gameTable, &iLastFall, & jLastFall);
+  if(merge_ == 1){
     return;
   }
 

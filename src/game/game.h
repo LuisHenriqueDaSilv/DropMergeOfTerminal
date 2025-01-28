@@ -5,6 +5,7 @@
     extern int rows;
     extern int columns;
     int fall();
+    int merge();
     void gameStart();
     void handleGame();
 #endif

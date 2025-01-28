@@ -4,7 +4,7 @@
 #include "menu/menu.h"
 #include "game/game.h"
 
-void clearTerminal() {
+void clearTerminal(){
   #ifdef _WIN32
     system("cls");
   #else
@@ -17,7 +17,7 @@ void clearTerminal() {
   // 1: Menu
   // 2: Jogo
 int gameStatus = 1;
-int rows = 7,columns = 5;
+int rows = 10,columns = 5;
 
 
 int main(){
