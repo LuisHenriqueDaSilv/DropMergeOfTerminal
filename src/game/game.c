@@ -62,7 +62,7 @@ void handleGame(){
         printf("|");
         if(gameTable[i][j] < 0){
           int positiveValue =  gameTable[i][j]*-1;
-          printf("\033[0;35m");
+          printf("\033[0;31m");
           printCenter(positiveValue, 8);
         } else {
           printCenter(gameTable[i][j], 8);
@@ -73,11 +73,12 @@ void handleGame(){
     printf("\n\033[0m--------------------------------------------------\033[0m\n");
   }
 
+  int merge_ = merge(gameTable, &iLastFall, & jLastFall);
   int fall_ = fall(gameTable, &iLastFall, &jLastFall);
   if(fall_==1){
     return;
   } 
-  int merge_ = merge(gameTable, &iLastFall, & jLastFall);
+  
   if(merge_ == 1){
     return;
   }
