@@ -9,7 +9,7 @@
 
 void mySleep(int ms) {
   #if defined(_WIN32) || defined(_WIN64)
-    Sleep(ms);
+    Sleep(ms/3);
   #else
     usleep(ms * 1000);
   #endif
