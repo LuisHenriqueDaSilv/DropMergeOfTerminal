@@ -75,16 +75,10 @@ void handleGame(){
 
   int merge_ = merge(gameTable, &iLastFall, & jLastFall);
   int fall_ = fall(gameTable, &iLastFall, &jLastFall);
-  if(fall_==1){
-    return;
-  } 
-  
-  if(merge_ == 1){
-    return;
-  }
+  if(fall_==1){ return;} 
+  if(merge_ == 1){ return;}
 
   char key = readKey();
-
   if(key == 65 || key == 97){
     if(currentPointer == 0){ currentPointer = columns-1; }
     else {currentPointer--;};
