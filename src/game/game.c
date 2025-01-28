@@ -16,12 +16,7 @@ FILE* gameSequence;
 
 void gameStart(){
   gameStatus = 2;
-  for (int i = 0; i < rows; i++) {
-    for (int j = 0; j < columns; j++) {
-      printf("%d ", gameTable[i][j]);
-    }
-    printf("\n");
-  }
+  memset(gameTable, 0, sizeof(gameTable));
   gameSequence = fopen("src/data/gameSequence.txt", "r");
   if (gameSequence == NULL) {
     printf("Erro ao abrir o arquivo gameSequence.txt\n");
@@ -58,7 +53,6 @@ void handleGame(){
       if(gameTable[i][j] == 0){
         printf("|        |");
       } else {
-        // printf("|%8d|", gameTable[i][j]);
         printf("|");
         if(gameTable[i][j] < 0){
           int positiveValue =  gameTable[i][j]*-1;
@@ -73,8 +67,8 @@ void handleGame(){
     printf("\n\033[0m--------------------------------------------------\033[0m\n");
   }
 
-  int merge_ = merge(gameTable, &iLastFall, & jLastFall);
   int fall_ = fall(gameTable, &iLastFall, &jLastFall);
+  int merge_ = merge(gameTable, &iLastFall, & jLastFall);
   if(fall_==1){ return;} 
   if(merge_ == 1){ return;}
 
@@ -89,7 +83,11 @@ void handleGame(){
     if(gameTable[0][currentPointer] == 0){
       gameTable[0][currentPointer] = nextValue1;
       nextValue1 = nextValue2;
-      fscanf(gameSequence, " %d", &nextValue2);
+      if(fscanf(gameSequence, " %d", &nextValue2) == EOF){
+        printf("Você ganhou!!!!!\n");
+        mySleep(3000);
+        gameStatus = 1;
+      }
     }
   }
 }

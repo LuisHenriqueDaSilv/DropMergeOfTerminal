@@ -11,7 +11,7 @@ void handleMenu(){
   printf("\033[0m==================================================\033[0m\n");
   printf("   Seja bem vindo ao \033[32mDropmerge de Terminal!\n");
   printf("\033[0m--------------------------------------------------\n");
-  printf("\033[0m Para jogar, e facil: use as teclas \033[35mW, A, S e D\n \033[0mpara mover a seta no menu, e pressione \033[35mEnter\n \033[0mpara selecionar a opcao desejada. Se precisar \n de mais informações, escolha o modo \033[35mAjuda.\n");
+  printf("\033[0m Para jogar, e facil: use as teclas \033[35mW, A, S e D\n \033[0mpara mover a seta no menu, e pressione \033[35mEnter\n \033[0mpara selecionar a opcao desejada. Se precisar \n de mais informacoes, escolha o modo \033[35mAjuda.\n");
 
 
   printf("\n   \033[0mJogar");

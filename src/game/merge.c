@@ -15,12 +15,12 @@ int merge(int gameTable[rows][columns], int* iLastFall, int* jLastFall){
   }
 
   int n = 0; 
-  if( *iLastFall>0 && gameTable[*iLastFall][*jLastFall-1] == fallVal ){ // Valor da esquerda 
+  if( *jLastFall>0 && gameTable[*iLastFall][*jLastFall-1] == fallVal ){ // Valor da esquerda 
     n++;
     resetSpot(gameTable, *iLastFall, *jLastFall-1);
   }
 
-  if(*iLastFall != 4 && gameTable[*iLastFall][*jLastFall+1] == fallVal ){ // Valor da direita 
+  if(*jLastFall != 4 && gameTable[*iLastFall][*jLastFall+1] == fallVal ){ // Valor da direita 
     n++;
     resetSpot(gameTable, *iLastFall, *jLastFall+1);
   }
