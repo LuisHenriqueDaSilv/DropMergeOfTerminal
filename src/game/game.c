@@ -85,7 +85,7 @@ void handleGame(){
   } else   if(key == 68 || key == 100){
     if(currentPointer == columns-1){ currentPointer = 0; } 
     else {currentPointer++;}
-  } if (key == 10){ // Selecionou a linha
+  } if (key == 10 || key == 13){ // Selecionou a linha
     if(gameTable[0][currentPointer] == 0){
       gameTable[0][currentPointer] = nextValue1;
       nextValue1 = nextValue2;

@@ -27,7 +27,7 @@ char readKey(){
   printf("\n");
   char c = '\0';
   #ifdef _WIN32
-    while (1) {
+    while (c == '\0') {
       if (_kbhit()) {
         c = _getch();
       }
