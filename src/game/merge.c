@@ -10,7 +10,7 @@ void resetSpot(int gameTable[rows][columns], int i, int j){
 int merge(int gameTable[rows][columns], int* iLastFall, int* jLastFall){
 
   int fallVal = gameTable[*iLastFall][*jLastFall];
-  if( fallVal == 0 || (*iLastFall!=9 && gameTable[*iLastFall+1][*jLastFall] ==0) ){
+  if(fallVal == 0 || (*iLastFall!=9 && gameTable[*iLastFall+1][*jLastFall] ==0) ){
     return 0;
   }
 
@@ -34,7 +34,9 @@ int merge(int gameTable[rows][columns], int* iLastFall, int* jLastFall){
     
     if(gameTable[*iLastFall][*jLastFall] < 0 ){
       gameTable[*iLastFall][*jLastFall] = fallVal*pow(2, n)*-1;
+      player.points+=gameTable[*iLastFall][*jLastFall];
       mySleep(400);
+      return -1;
     } else {
       gameTable[*iLastFall][*jLastFall] *= -1;
     }

@@ -29,7 +29,6 @@ void handleMenu(){
   printf("\033[1;0m==================================================\033[0m");
 
   char key = readKey(); 
-  printf("%d", key);
   
   if(key == 83 || key == 115){
     if(pointer == 4){pointer = 0;}
@@ -37,11 +36,13 @@ void handleMenu(){
   } else if(key == 119 || key == 87){
     if(pointer == 0){pointer = 4;}
     else {pointer--;}
-  } else if(key == 10 || key == 13){ 
+  } else if(key == 10 || key == 13){ // Enter 
     if(pointer == 4){
       gameStatus = 0;
-    } if (pointer == 0){
+    } else if (pointer == 0){
       gameStart();
+    } else if(pointer == 1){ // Ranking
+      gameStatus = 4;
     }
   }
 

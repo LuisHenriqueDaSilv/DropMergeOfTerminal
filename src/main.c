@@ -3,22 +3,18 @@
 
 #include "menu/menu.h"
 #include "game/game.h"
+#include "utils/utils.h"
 
-void clearTerminal(){
-  #ifdef _WIN32
-    system("cls");
-  #else
-    system("clear");
-  #endif
-}
 
 // Status:
   // 0: Exit
-  // 1: Menu
-  // 2: Jogo
+  // 1: Bem vindo
+  // 2: Menu
+  // 3: Jogo
+  // 4: Ranking
 int gameStatus = 1;
 int rows = 10,columns = 5;
-
+Player player;
 
 int main(){
   clearTerminal();
@@ -27,10 +23,16 @@ int main(){
       case 0:
         break;
       case 1:
+        getNickname();
+        break;
+      case 2:
         handleMenu();
         break;
-      case 2: 
+      case 3: 
         handleGame();
+        break;
+      case 4: 
+        showRanking();
         break;
       default:
         break;

@@ -11,15 +11,18 @@ int nextValue1 = 4;
 int nextValue2 = 16;
 int iLastFall = 0;
 int jLastFall = 0;
+int merge_ = 0;
 
-FILE* gameSequence;
+FILE* gameSequence; 
 
 void gameStart(){
-  gameStatus = 2;
+  gameStatus = 3;
+  player.points = 0;
   memset(gameTable, 0, sizeof(gameTable));
   gameSequence = fopen("src/data/gameSequence.txt", "r");
   if (gameSequence == NULL) {
-    printf("Erro ao abrir o arquivo gameSequence.txt\n");
+    clearTerminal();
+    printf("Erro ao abrir o arquivo gameSequence.txt (Você provavelmente apagou ele)\n");
     exit(1);
   }
 
@@ -28,18 +31,17 @@ void gameStart(){
 }
 
 void handleGame(){
+  // readPlayerInRanking();
   printf("\033[0m==================================================\033[0m\n");
-  printf("                          Proximas: |  \033[32m%d  \033[0m|  \033[35m%d  \033[0m| \n", nextValue1, nextValue2);
+  printf("PTS: ");
+  printCenter(player.points, 10);
+  printf("||          Proximas: |");
+  printCenter(nextValue1, 5);
+  printf("\033[0m|");
+  printCenter(nextValue2, 5);
+  printf("\033[0m| \n");
   printf("\033[0m--------------------------------------------------\n\n");
 
-  for(int i = 0; i<columns; i++){
-    if(currentPointer == i){
-      printf("     |    ");
-    } else {
-      printf("          ");
-    }
-  }
-  printf("\n");
   for(int i = 0; i<columns; i++){
     if(currentPointer == i){
       printf("     *    ");
@@ -67,10 +69,20 @@ void handleGame(){
     printf("\n\033[0m--------------------------------------------------\033[0m\n");
   }
 
+  merge_ = merge(gameTable, &iLastFall, & jLastFall);
+  if(merge_ == -1){ return;}
+  else if(merge_ == 1){ return;}
   int fall_ = fall(gameTable, &iLastFall, &jLastFall);
-  int merge_ = merge(gameTable, &iLastFall, & jLastFall);
   if(fall_==1){ return;} 
-  if(merge_ == 1){ return;}
+  int gameover_ = gameover(gameTable, nextValue1);
+  if(gameover_ == 1){
+    printf("Fim de jogo, %s! Não tem mais onde você jogar\n", player.name);
+    writePlayerInRanking(player);
+    gameStatus = 2;
+    mySleep(3000);
+    clearTerminal();
+    return;
+  }
 
   char key = readKey();
   if(key == 65 || key == 97){
@@ -83,10 +95,14 @@ void handleGame(){
     if(gameTable[0][currentPointer] == 0){
       gameTable[0][currentPointer] = nextValue1;
       nextValue1 = nextValue2;
+      iLastFall = 0;
+      jLastFall = currentPointer;
       if(fscanf(gameSequence, " %d", &nextValue2) == EOF){
-        printf("Você ganhou!!!!!\n");
+        printf("Parabens %s, você ganhou!!!!!\n", player.name);
+        writePlayerInRanking(player);
+        gameStatus = 2;
         mySleep(3000);
-        gameStatus = 1;
+        clearTerminal();
       }
     }
   }
