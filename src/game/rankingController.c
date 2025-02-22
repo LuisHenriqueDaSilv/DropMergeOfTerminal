@@ -71,3 +71,15 @@ int readPlayersInRanking(int page, int n, Player players[]){
   }
   return 0;
 }
+
+void clearRanking(){
+  FILE *arquivo = fopen("src/data/ranking.bin", "wb");
+  if (arquivo == NULL) {
+    printf("Erro ao abrir o arquivo");
+    exit(1);
+  }
+
+  fclose(arquivo);
+  printf("Arquivo limpo com sucesso.\n");
+  return;
+}

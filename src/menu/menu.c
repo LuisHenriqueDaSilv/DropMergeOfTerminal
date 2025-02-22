@@ -37,13 +37,19 @@ void handleMenu(){
     if(pointer == 0){pointer = 4;}
     else {pointer--;}
   } else if(key == 10 || key == 13){ // Enter 
+
     if(pointer == 4){
       gameStatus = 0;
     } else if (pointer == 0){
       gameStart();
     } else if(pointer == 1){ // Ranking
       gameStatus = 4;
+    } else if(pointer == 3){
+      gameStatus = 5;
+    } else if(pointer == 2){
+      gameStatus = 6;
     }
+
   }
 
 

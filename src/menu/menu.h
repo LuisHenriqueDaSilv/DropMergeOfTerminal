@@ -8,4 +8,6 @@
   void handleMenu();
   void getNickname();
   void showRanking();
+  void showHelp();
+  void showSettings();
 #endif

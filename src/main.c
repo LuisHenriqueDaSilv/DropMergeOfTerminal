@@ -12,9 +12,15 @@
   // 2: Menu
   // 3: Jogo
   // 4: Ranking
+  // 5: Help
+  // 6: Settings
 int gameStatus = 1;
 int rows = 10,columns = 5;
 Player player;
+int eraser = 0;
+int nextEraser = 1024;
+int erasing = 0;
+int eraserMode = 0; // 0: Remove apenas 1 valor, 1: remove todos ao redor
 
 int main(){
   clearTerminal();
@@ -33,6 +39,12 @@ int main(){
         break;
       case 4: 
         showRanking();
+        break;
+      case 5: 
+        showHelp();
+        break;
+      case 6:
+        showSettings();
         break;
       default:
         break;
