@@ -12,19 +12,19 @@ void showRanking(){
   }
   int nOfPlayers = readPlayersInRanking(page, 15, players );
   printf("\033[0m==================================================\033[0m\n");
-  printf(" Esses são os lendários jogadores do DropMerge!\n");
-  printf(" Diz a lenda que ninguém foi capaz de superar \n");
+  printf(" Esses sao os lendarios jogadores do DropMerge!\n");
+  printf(" Diz a lenda que ninguem foi capaz de superar \n");
   printf("              as pontuações deles!\n");
   printf("\033[0m--------------------------------------------------\n");
   for(int i = 0; i<15; i++){
     if(players[i].points > 0){
-      printf(" %dº %s-%d\n", page*15+i+1, players[i].name, players[i].points);
+      printf(" %d) %s-%d\n", page*15+i+1, players[i].name, players[i].points);
     } else {
-      printf(" %dº\n", (page*15)+i+1);
+      printf(" %d) \n", (page*15)+i+1);
     }
   }
   printf("\n");
-  printf("          Use A e D para passar as páginas");
+  printf("          Use A e D para passar as paginas");
   printf("\n\033[1;0m==================================================\033[0m\n");
   printf("\033[1;0mPressione ESC para voltar                 Pag: %d\033[0m\n", page+1);
   printf("\033[1;0m==================================================\033[0m");
