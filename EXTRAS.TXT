@@ -1,3 +1,4 @@
+O arquivo principal do jogo está dentro de "src" e é chamado "main.c"
 Para funcionar o código precisa:
   arquivo numeros.txt 
   arquivo ranking.bin
@@ -6,7 +7,7 @@ Para funcionar o código precisa:
 
 Como extra foi implementado:
   1) um segundo modo para o martelo (No jogo é chamado de borracha) 
-que pode ser selecionado nas configurações
+    o modo desejado para a borracha pode ser selecionado nas configurações
   2) Sistema de páginas no ranking e Ajuda/Sobre
   3) Implementação de um sistema para leitura de teclas em tempo real
      sem que seja necessário apertar enter a cada entrada
