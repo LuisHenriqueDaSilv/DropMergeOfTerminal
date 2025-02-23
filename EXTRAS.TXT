@@ -1,3 +1,8 @@
+De antemão, peço desculpas por provavelmente dificultar a vida do monitor responsável por corrigir este jogo (kkkk), 
+mas comecei a desenvolvê-lo de forma modularizada e só descobri ontem à noite que deveria enviar apenas um arquivo .c. 
+No entanto, conversei com a professora, e ela informou que poderia ser dessa forma, desde que eu explicasse como compilar.
+
+
 O arquivo principal do jogo está dentro de "src" e é chamado "main.c"
 Para funcionar o código precisa:
   arquivo numeros.txt 
