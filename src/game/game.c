@@ -21,10 +21,10 @@ void gameStart(){
   gameStatus = 3;
   player.points = 0;
   memset(gameTable, 0, sizeof(gameTable));
-  gameSequence = fopen("src/data/gameSequence.txt", "r");
+  gameSequence = fopen("numeros.txt", "r");
   if (gameSequence == NULL) {
     clearTerminal();
-    printf("Erro ao abrir o arquivo gameSequence.txt (Você provavelmente apagou ele)\n");
+    printf("Erro ao abrir o arquivo numeros.txt (Você provavelmente apagou ele)\n");
     exit(1);
   }
 

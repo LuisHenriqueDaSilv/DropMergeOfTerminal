@@ -14,7 +14,7 @@ int compare(const void *a, const void *b){
 void writePlayerInRanking(Player player){
   if(player.points ==  0){ return;}
 
-  FILE *file = fopen("src/data/ranking.bin", "rb");
+  FILE *file = fopen("ranking.bin", "rb");
   if(file){
     int counter = 0;
     Player aux; 
@@ -24,7 +24,7 @@ void writePlayerInRanking(Player player){
     fclose(file);
 
     Player players[counter+1];
-    file = fopen("src/data/ranking.bin", "rb");
+    file = fopen("ranking.bin", "rb");
     for(int i = 0; i<counter; i++){
       fread(&players[i], sizeof(Player), 1, file);
     }
@@ -33,7 +33,7 @@ void writePlayerInRanking(Player player){
     players[counter] = player;
     qsort(players, counter+1, sizeof(Player), compare);
 
-    file = fopen("src/data/ranking.bin", "wb+");
+    file = fopen("ranking.bin", "wb+");
     for(int i = 0; i<counter+1; i++){
       fwrite(&players[i], sizeof(Player), 1, file);
     }
@@ -47,7 +47,7 @@ void writePlayerInRanking(Player player){
 }
 
 int readPlayersInRanking(int page, int n, Player players[]){
-  FILE *file = fopen("src/data/ranking.bin", "rb");
+  FILE *file = fopen("ranking.bin", "rb");
   if(file){
     int playersCount = 0; 
     for(int i = 0; playersCount < n; i++){
@@ -73,7 +73,7 @@ int readPlayersInRanking(int page, int n, Player players[]){
 }
 
 void clearRanking(){
-  FILE *arquivo = fopen("src/data/ranking.bin", "wb");
+  FILE *arquivo = fopen("ranking.bin", "wb");
   if (arquivo == NULL) {
     printf("Erro ao abrir o arquivo");
     exit(1);

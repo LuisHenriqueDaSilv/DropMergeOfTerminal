@@ -1,0 +1,22 @@
+Para funcionar o código precisa:
+  arquivo numeros.txt 
+  arquivo ranking.bin
+  (Ambos no mesmo diretório que o programa compilado)
+
+
+Como extra foi implementado:
+  1) um segundo modo para o martelo (No jogo é chamado de borracha) 
+que pode ser selecionado nas configurações
+  2) Sistema de páginas no ranking e Ajuda/Sobre
+  3) Implementação de um sistema para leitura de teclas em tempo real
+     sem que seja necessário apertar enter a cada entrada
+
+Como compilar:
+Usando make:
+  Rode "make" no seu terminal
+Usando gcc: 
+  gcc ./src/main.c ./src/keyboard/keyboard.c ./src/keyboard/keyboard.h ./src/menu/menu.c ./src/menu/menu.h ./src/game/game.h ./src/game/game.c ./src/utils/utils.h ./src/utils/printCenter.c ./src/game/fall.c ./src/utils/mySleep.c ./src/game/merge.c ./src/menu/getNickname.c ./src/utils/clearTerminal.c ./src/game/rankingController.c ./src/menu/ranking.c ./src/game/gameover.c ./src/menu/help.c ./src/menu/settings.c  -o ./run -lm
+
+Caso encontre dificuldades em compilar, disponibilizei dois arquivos do projeto já compilados:
+  run_windows.exe (Compilado para windows)
+  run_linux (Compilado para linux)
